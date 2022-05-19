@@ -1,0 +1,31 @@
+.difinitions {
+    @extend %margin-sub-section;
+    @extend %writing-basic;
+    @include flex(wrap, center, center);
+    &[data-justify='start'] {
+        justify-content: flex-start;
+    }
+    dl {
+        @include flex(nowrap, flex-start, center);
+        margin: 1em 1em 0 0;
+        &::after {
+            margin-left: 1em;
+            content: '/';
+        }
+        &:last-child {
+            margin-right: 0;
+            &::after {
+                content: none;
+            }
+        }
+        > dt,
+        > dd {
+            margin: 0;
+            padding: 0;
+        }
+        > dt {
+            margin-right: 0.25em;
+            font-weight: $weight-bold;
+        }
+    }
+}

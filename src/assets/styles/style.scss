@@ -1,2 +1,9 @@
+// import normalize.css
+@import '~normalize.css';
+
+// project individual style
 @import './foundation/**';
+@import './functions/**';
+@import './mixins/**';
 @import './layout/**';
+@import './components/**';

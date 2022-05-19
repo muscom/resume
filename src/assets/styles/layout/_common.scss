@@ -1,0 +1,57 @@
+body {
+    color: $text-color;
+    font-family: $family-basic;
+    font-weight: $weight-normal;
+    font-variant: proportional-nums proportional-width;
+}
+h1 {
+    @extend %margin-article;
+    @extend %heading-high;
+    @extend %q-super;
+}
+h2 {
+    @extend %margin-section;
+    @extend %heading-high;
+    @extend %q-largest;
+}
+h3 {
+    @extend %margin-section;
+    @extend %heading-high;
+    @extend %q-larger;
+}
+h4 {
+    @extend %margin-sub-section;
+    @extend %heading-low;
+    @extend %q-large;
+}
+h5 {
+    @extend %heading-low;
+    @extend %margin-sub-section;
+    @extend %q-large;
+}
+h6 {
+    @extend %heading-low;
+    @extend %margin-element;
+    @extend %q-large;
+    font-weight: 300;
+}
+p {
+    @extend %writing-basic;
+    @extend %margin-element;
+}
+a {
+    display: inline-block;
+    padding: 0.1em 0.75em;
+    background-color: $sub-color;
+    color: $text-reverse-color;
+    text-decoration: none;
+}
+section {
+    @extend %margin-section;
+}
+picture {
+    source,
+    img {
+        width: 100%;
+    }
+}

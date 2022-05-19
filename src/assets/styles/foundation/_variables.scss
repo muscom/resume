@@ -1,0 +1,101 @@
+@use 'sass:math';
+
+// colors
+$key-color: #ff00b8;
+$sub-color: #009aff;
+$text-color: #000;
+$text-reverse-color: #fff;
+$effective-color: var(--effective-color);
+$sub-effective-color: var(--sub-effective-color);
+$base-color: var(--base-color);
+
+// space
+$space-article: 5em;
+$space-section: 3em;
+$space-sub-section: 2em;
+$space-element: 1em;
+
+// margin
+%margin-common {
+    &:first-child {
+        margin-top: 0;
+    }
+}
+%margin-article {
+    @extend %margin-common;
+    margin: $space-article 0 0;
+}
+%margin-section {
+    @extend %margin-common;
+    margin: $space-section 0 0;
+}
+%margin-sub-section {
+    @extend %margin-common;
+    margin: $space-sub-section 0 0;
+}
+%margin-element {
+    @extend %margin-common;
+    margin: $space-element 0 0;
+}
+
+// font variables
+// -------------------
+
+// family
+$family-basic: var(--basic-family);
+
+// weight
+$weight-normal: 300;
+$weight-demi: 400;
+$weight-bold: 600;
+$weight-super: 800;
+
+// line height
+$line-height-writing: 1.8;
+$line-height-heading: 1.4;
+
+// Q size
+%q-superior {
+    font-size: 3rem;
+}
+%q-super {
+    font-size: 2.5rem;
+}
+%q-largest {
+    font-size: 2.25rem;
+}
+%q-larger {
+    font-size: 1.75rem;
+}
+%q-large {
+    font-size: 1.5rem;
+}
+%q-emphasis {
+    font-size: 1.3125rem;
+}
+%q-body {
+    font-size: 1rem;
+}
+
+// level
+%heading-high {
+    line-height: $line-height-heading;
+    text-align: center;
+    font-weight: $weight-demi;
+}
+%heading-low {
+    line-height: $line-height-heading;
+    text-align: center;
+    font-weight: $weight-demi;
+}
+%writing-basic {
+    @extend %q-body;
+    line-height: $line-height-writing;
+    letter-spacing: 0.025em;
+}
+
+// gold ratio
+$gold-ratio: (
+    main: 61.804697157%,
+    sub: 38.195302843%,
+);
