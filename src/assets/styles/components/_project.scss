@@ -1,0 +1,27 @@
+.projects {
+    @extend %margin-article;
+}
+.project {
+    @extend %margin-article;
+    h3 {
+        @include flex(wrap, center, center);
+        flex-direction: column;
+        span {
+            @extend %margin-element;
+        }
+        small,
+        a {
+            @extend %writing-basic;
+            margin: 0 0.5rem;
+        }
+        small {
+            color: #999;
+            &::before {
+                content: '(';
+            }
+            &::after {
+                content: ')';
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 main {
     @extend %margin-page;
+    padding-bottom: $space-page;
     article {
         @extend %content-container;
         @extend %margin-page;

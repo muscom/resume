@@ -79,14 +79,28 @@ block body
         article
             .content-container
                 h2 プロジェクト実績
-                section
+                section.projects
                     each project in profile.project
-                        section
-                            h3 #{project.name}
-                                small #{project.period}
-                            p
-                                a(href = project.uri) #{project.uri}
+                        section.project
+                            h3
+                                span.project-name #{project.name}
+                                    small #{project.period}
+                                span.project-detail
+                                    a(href = project.uri) #{project.uri}
                             .list
                                 ul
                                     each role in project.role
                                         li #{role}
+        article
+            .content-container
+                h2 お問い合わせ
+                section
+                    .difinitions
+                        dl
+                            dt メールアドレス
+                            dd
+                                a(href = 'mailto:' + profile.data.mail) #{profile.data.mail}
+                        dl
+                            dt 電話番号
+                            dd
+                                a(href = 'tel:' + profile.data.phone) #{profile.data.phone}
