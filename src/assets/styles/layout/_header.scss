@@ -1,7 +1,11 @@
 #global-header {
     @extend %content-container;
-    padding: $space-article 0;
-    text-align: center;
+    padding: $space-article 0 0;
+    .content-container {
+        @include flex(nowrap, center, center);
+        flex-direction: column;
+        height: 100%;
+    }
     section {
         @include flex(nowrap, center, center);
     }

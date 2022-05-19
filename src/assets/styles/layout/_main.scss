@@ -1,5 +1,50 @@
 main {
+    @extend %margin-page;
     article {
         @extend %content-container;
+        @extend %margin-page;
+        &::before {
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            margin: 0 auto;
+            background: $sub-color;
+            border-radius: 50%;
+            box-shadow: 13px 0 0 $key-color;
+            transform: translate(-50%, -6.5rem);
+            content: '';
+        }
+    }
+    table {
+        @extend %margin-sub-section;
+        @extend %writing-basic;
+        margin-right: auto;
+        margin-left: auto;
+        border-collapse: collapse;
+        border: none;
+        tr {
+            th,
+            td {
+                padding: $space-element 0 0;
+            }
+            th {
+                font-weight: $weight-bold;
+                text-align: right;
+            }
+            td {
+                padding-left: $space-element;
+            }
+            &:first-child {
+                th,
+                td {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+    ul {
+        @extend %margin-sub-section;
+        @include flex(nowrap, center, flex-start);
+        flex-direction: column;
     }
 }

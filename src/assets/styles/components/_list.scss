@@ -1,0 +1,13 @@
+.list {
+    @extend %margin-sub-section;
+    @include flex(nowrap, center, flex-start);
+    ul,
+    ol {
+        margin: 0;
+    }
+    li {
+        &::marker {
+            color: $key-color;
+        }
+    }
+}

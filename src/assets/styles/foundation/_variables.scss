@@ -10,16 +10,21 @@ $sub-effective-color: var(--sub-effective-color);
 $base-color: var(--base-color);
 
 // space
-$space-article: 5em;
-$space-section: 3em;
-$space-sub-section: 2em;
-$space-element: 1em;
+$space-page: 12rem;
+$space-article: 6rem;
+$space-section: 3rem;
+$space-sub-section: 2rem;
+$space-element: 1rem;
 
 // margin
 %margin-common {
     &:first-child {
         margin-top: 0;
     }
+}
+%margin-page {
+    @extend %margin-common;
+    margin: $space-page 0 0;
 }
 %margin-article {
     @extend %margin-common;

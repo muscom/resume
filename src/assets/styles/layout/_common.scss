@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     color: $text-color;
     font-family: $family-basic;
     font-weight: $weight-normal;
@@ -53,5 +54,6 @@ picture {
     source,
     img {
         width: 100%;
+        vertical-align: bottom;
     }
 }
