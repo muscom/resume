@@ -42,10 +42,9 @@ p {
 }
 a {
     display: inline-block;
-    padding: 0.1em 0.75em;
-    background-color: $sub-color;
-    color: $text-reverse-color;
+    color: $sub-color;
     text-decoration: none;
+    font-weight: $weight-bold;
 }
 section {
     @extend %margin-section;

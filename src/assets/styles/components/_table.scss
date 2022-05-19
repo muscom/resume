@@ -1,4 +1,5 @@
 .table {
     @extend %margin-sub-section;
+    @extend %writing-basic;
     @include flex(nowrap, center, flex-start);
 }
