@@ -4,7 +4,9 @@
     @include flex(nowrap, center, flex-start);
     ul,
     ol {
-        margin: 0;
+        @extend %margin-sub-section;
+        @include flex(nowrap, center, flex-start);
+        flex-direction: column;
     }
     li {
         &::marker {
