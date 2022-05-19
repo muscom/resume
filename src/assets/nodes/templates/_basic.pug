@@ -1,0 +1,12 @@
+include /src/assets/nodes/includes/_init
+block settings
+-
+    const user_settings = Object.assign({}, settings);
+doctype html
+html(lang='en')
+    head
+        +head(user_settings)
+        include /src/assets/nodes/includes/_vars
+        block head
+    body
+        block body

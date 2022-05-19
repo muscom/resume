@@ -1,0 +1,70 @@
+-
+    let profile = {
+        data: {
+            name: 'Your Name',
+            kana: 'Your Name Kana',
+            birthDay: '1900-01-01',
+            phone: '000-123-4567',
+            mail: 'mail@example.com',
+            address: '〒000-0000 Address Strings will apply here.'
+        },
+        photo: {
+            x1: './assets/images/common/photo.jpg',
+            x2: './assets/images/common/photo@2x.jpg',
+        },
+        objective: [
+            'フロントエンドエンジニアとして、豊富な画面数をもつWebサイトやWebアプリケーションを制作するプロジェクトアサインを希望しています。特に汎用のコンポーネントを役割や機能に応じて設計・実装することに長けているため、このような性質を持つ案件に参加する機会を積極的に求めています。'
+        ],
+        specialty: [
+            utility.lorem.publish(),
+        ],
+        experience: [
+            {
+                '1900': 'Event Detail',
+            },
+            {
+                '1901': 'Event Detail',
+            },
+            {
+                '1901': 'Event Detail',
+            },
+            {
+                '1901': 'Event Detail',
+            },
+            {
+                '1901': 'Event Detail',
+            },
+        ],
+        skill: {
+            skilled: [
+                'skill descriptions' + utility.lorem.publish(30, 'en'),
+                'skill descriptions' + utility.lorem.publish(30, 'en'),
+                'skill descriptions' + utility.lorem.publish(30, 'en'),
+                'skill descriptions' + utility.lorem.publish(30, 'en'),
+                'skill descriptions' + utility.lorem.publish(30, 'en'),
+            ],
+            advanced: [
+                'skill descriptions' + utility.lorem.publish(30, 'en'),
+            ]
+        },
+        project: [
+            {
+                name: 'Project name',
+                period: '1900-01-01',
+                uri: 'https://www.example.com',
+                role: [
+                    utility.lorem.publish(30),
+                    utility.lorem.publish(30),
+                    utility.lorem.publish(30),
+                ],
+            },
+        ],
+    };
+if is_production
+    //- import true profile, when production
+    include /src/.data/_data
+    -
+        profile = privateProfile;
+-
+
+    profile.data.birth = new Date(profile.data.birthDay);

@@ -1,0 +1,249 @@
+@charset 'utf-8';
+body {
+    margin: 0;
+    background: var(--base-color);
+    font-size: 16px;
+    font-family: 'Yu Gothic', meiryo,
+        '\30D2\30E9\30AE\30CE\89D2\30B4\0020\0050\0072\006F\004E\0020\0057\0033',
+        MS P Gothic, Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-size: 100%;
+}
+
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: square;
+    margin: 0.5em 0 0;
+}
+
+a {
+    position: relative;
+    padding: 0 0 0 0.75em;
+    color: var(--effective-color);
+}
+a:before {
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 0;
+    border: 3px solid transparent;
+    border-left: 5px solid var(--effective-color);
+    content: ' ';
+}
+a:hover,
+a:focus {
+    color: var(--sub-effective-color);
+    text-decoration: none;
+}
+a:active {
+    background: var(--base-color);
+    text-decoration: none;
+}
+
+header {
+    padding: 2em 0;
+    border-bottom: 5px solid var(--key-color);
+    box-shadow: 0 1px 10px #666;
+    background: #efefef;
+}
+header h1 {
+    float: left;
+    margin: 0;
+    width: 48.9%;
+    max-width: 440px;
+    font-size: 250%;
+    font-weight: normal;
+}
+header h1:after {
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+    content: '.';
+}
+
+header h1 img {
+    display: block;
+    float: left;
+    width: 120px;
+    margin-right: 0.5em;
+    border: 8px solid #fff;
+}
+
+header h1 rt {
+    font-size: 42%;
+}
+
+header h1 small {
+    display: block;
+    color: var(--sub-color);
+    font-size: 38%;
+}
+
+header table {
+    max-width: 440px;
+    margin: 0 0 0 auto;
+}
+
+header table th,
+header table td {
+    border-collapse: collapse;
+    border: none;
+}
+
+header table th {
+    padding-right: 0.5em;
+    text-align: right;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+article {
+    width: 85%;
+    max-width: 900px;
+    margin: 4em auto 0;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 10px #999;
+}
+
+article > *:first-child {
+    margin-top: 0;
+}
+
+article > h1 {
+    margin: 0.5em 0 0;
+    font-size: 200%;
+    font-weight: normal;
+}
+
+article > p {
+    margin: 0.5em 0 0;
+}
+
+article > h1 + p {
+    margin-top: 0;
+}
+
+article section {
+    margin: 1em 0 0;
+    padding: 1em 0 0;
+    border-top: 1px dotted #666;
+}
+article section:after {
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+    content: '.';
+}
+
+section h2 {
+    margin: 0.5em 0 0;
+    font-size: 150%;
+    font-weight: normal;
+}
+
+section h2 small {
+    display: block;
+    font-size: 75%;
+    color: var(--sub-color);
+}
+
+article section section {
+    border: 1px solid #ccc;
+}
+
+section > *:first-child {
+    margin-top: 0;
+}
+
+section h3 {
+    margin: 1em 0 0;
+    font-size: 125%;
+    font-weight: normal;
+    padding: 0 0 0 0.5em;
+    border-left: 2px solid var(--key-color);
+}
+
+section p {
+    margin: 0.5em 0 0;
+}
+
+section h2 + p {
+    margin-top: 0;
+}
+
+@media print {
+    body {
+        font-size: 8pt;
+        background: #fff;
+    }
+
+    a {
+        padding: 0;
+        text-decoration: none;
+    }
+
+    rt {
+        display: none;
+    }
+
+    a:before {
+        position: static;
+        display: inline;
+        height: auto;
+        width: auto;
+        border: none;
+    }
+
+    section a:before {
+        content: 'URL:';
+    }
+
+    header,
+    article {
+        width: auto;
+        background: #fff;
+    }
+
+    header {
+        padding: 0 0 0.5em;
+        border-bottom: 1px solid #000;
+        box-shadow: none;
+    }
+
+    article {
+        margin-top: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 1px solid #000;
+        page-break-after: always;
+    }
+    article:before {
+        clear: both;
+        display: block;
+        content: '';
+    }
+
+    section h2 small {
+        color: #999;
+    }
+
+    section h3 {
+        border-color: #999;
+    }
+}

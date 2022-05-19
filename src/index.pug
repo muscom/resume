@@ -1,0 +1,74 @@
+extends /src/assets/nodes/templates/_basic
+//- Privacy
+block settings
+    include /src/assets/nodes/includes/_profile
+    -
+        // document setting
+        const settings = {
+            title: 'Profile Overview',
+            description: '',
+            keywords: '',
+            site_name: 'Resume'
+        };
+block head
+block body
+    header#global-header
+        div
+            h1
+                ruby
+                    | #{profile.data.name}
+                    rt #{profile.data.kana}
+            aside
+                p(datetime = profile.data.birth) #{'生年月日: ' + profile.data.birth.toLocaleDateString('ja-JP')}
+                picture
+                    source(srcset = profile.photo.x2 + ' 2x')
+                    img(src = profile.photo.x1 alt = '')
+            section
+                dl
+                    dt 住所
+                    dd #{profile.data.address}
+                dl
+                    dt 電話番号
+                    dd
+                        a(href='tel:' + profile.data.phone) #{profile.data.phone}
+                dl
+                    dt メールアドレス
+                    dd
+                        a(href='mailto:' + profile.data.mail) #{profile.data.mail}
+    article
+        h1 履歴書
+        section
+            h2 職務経歴
+            table
+                tbody
+                    for item in profile.experience
+                        tr
+                            each event, date in item
+                                th #{date}
+                                td #{event}
+        section
+            h3 スキルの要約
+            h4 キャリアの中で最も経験を積んだスキル
+            ul
+                each item in profile.skill.skilled
+                    li #{item}
+            h4 現在習熟を目指しているスキル
+            ul
+                each item in profile.skill.advanced
+                    li #{item}
+            h3 得意分野
+            ul
+                each specialty in profile.specialty
+                    li #{specialty}
+    article
+        h1 職務経歴書
+        p 手がけてきた中で代表的なプロジェクトをいくつかご紹介します。
+        each project in profile.project
+            section
+                h2 #{project.name}
+                    small #{project.period}
+                p
+                    a(href = project.uri) #{project.uri}
+                ul
+                    each role in project.role
+                        li #{role}

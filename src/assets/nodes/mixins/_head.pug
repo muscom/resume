@@ -1,0 +1,25 @@
+mixin head(user_conf)
+    -
+        const default_conf = {
+            title: '',
+            description: '',
+            keywords: '',
+            type: 'article',
+            image: './assets/images/common/ogp.png',
+            url: '',
+            site_name: ''
+        };
+        const conf = Object.assign(default_conf, user_conf);
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width; initial-scale=1.0')
+    title #{conf.title}
+    meta(name='description', content=conf.description)
+    meta(name='keywords', content=conf.keywords)
+    // OGP
+    meta(name='og:title', content=conf.title)
+    meta(name='og:type', content=conf.type)
+    meta(name='og:image', content=conf.image)
+    meta(name='og:url', content=conf.url)
+    meta(name='og:site_name', content=conf.site_name)
+    // Style
+    link(rel='stylesheet', href='./assets/styles/style.css')
