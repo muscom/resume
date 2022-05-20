@@ -5,12 +5,22 @@
     ul,
     ol {
         @extend %margin-sub-section;
-        @include flex(nowrap, center, flex-start);
-        flex-direction: column;
     }
     li {
         &::marker {
             color: $key-color;
+        }
+    }
+    &[data-layout*='parallel'] {
+        ul,
+        ol {
+            @include flex;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+        li {
+            list-style-position: inside;
+            margin: 0 1em 0 0;
         }
     }
 }

@@ -15,6 +15,7 @@ $space-article: 6rem;
 $space-section: 3rem;
 $space-sub-section: 2rem;
 $space-element: 1rem;
+$space-sub-element: 0.5rem;
 
 // margin
 %margin-common {
@@ -41,6 +42,10 @@ $space-element: 1rem;
 %margin-element {
     @extend %margin-common;
     margin: $space-element 0 0;
+}
+%margin-sub-element {
+    @extend %margin-common;
+    margin: $space-sub-element 0 0;
 }
 
 // font variables

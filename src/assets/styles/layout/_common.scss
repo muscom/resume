@@ -46,6 +46,11 @@ a {
     text-decoration: none;
     font-weight: $weight-bold;
 }
+article {
+    @media print {
+        page-break-before: always;
+    }
+}
 section {
     @extend %margin-section;
 }
@@ -54,5 +59,10 @@ picture {
     img {
         width: 100%;
         vertical-align: bottom;
+    }
+}
+[data-media='print'] {
+    @media screen {
+        display: none;
     }
 }

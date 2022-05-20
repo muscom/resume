@@ -6,7 +6,14 @@
             birthDay: '1900-01-01',
             phone: '000-123-4567',
             mail: 'mail@example.com',
-            address: '〒000-0000 Address Strings will apply here.'
+            address: '〒000-0000 Address Strings will apply here.',
+            dependent: 0,
+            partner: true,
+        },
+        resume: {
+            uri: 'https://www.example.com/resume/',
+            id: 'Login ID',
+            password: 'Login password'
         },
         photo: {
             x1: './assets/images/common/photo.jpg',
@@ -35,17 +42,25 @@
                 '1901': 'Event Detail',
             },
         ],
+        education: [
+            {
+                '1900': 'Event Detail',
+            },
+            {
+                '1900': 'Event Detail',
+            },
+        ],
         skill: {
-            skilled: [
-                'skill descriptions' + utility.lorem.publish(30, 'en'),
-                'skill descriptions' + utility.lorem.publish(30, 'en'),
-                'skill descriptions' + utility.lorem.publish(30, 'en'),
-                'skill descriptions' + utility.lorem.publish(30, 'en'),
-                'skill descriptions' + utility.lorem.publish(30, 'en'),
+            description: [
+                utility.lorem.publish(30, 'ja'),
+                utility.lorem.publish(30, 'ja'),
+                utility.lorem.publish(30, 'ja'),
             ],
-            advanced: [
-                'skill descriptions' + utility.lorem.publish(30, 'en'),
-            ]
+            set: {
+                skill_name1: 100, // Years (numeric required)
+                skill_name2: 200,
+                skill_name3: 300,
+            },
         },
         project: [
             {

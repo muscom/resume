@@ -21,12 +21,8 @@
     .difinitions {
         flex: 0 1 75%;
         margin: 0 0 0 5%;
-        dl {
-            margin: 0.5em;
-        }
         @media (max-width: 750px) {
             margin: $space-sub-section 0 0;
-            justify-content: center;
         }
     }
 }

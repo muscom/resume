@@ -44,10 +44,39 @@ block body
                     dl
                         dt 生年月日
                         dd #{profile.data.birth.toLocaleDateString('ja-JP')}
+                    dl
+                        dt 扶養の有無
+                        dd #{!!profile.data.dependent ? profile.data.dependent + '人' : '無'}
+                    dl
+                        dt 配偶者
+                        dd #{profile.data.partner ? '有' : '無'}
     main
         article
             .content-container
                 h2 履歴書
+                .reference(data-media='print')
+                    p: a(href = profile.resume.uri) #{profile.resume.uri}
+                    dl
+                        dt ID
+                        dd #{profile.resume.id}
+                    dl
+                        dt Password
+                        dd #{profile.resume.password}
+
+                section
+                    h3 希望する職種・ポジション
+                    p !{profile.objective}
+                section
+                    h3 学歴
+                    .table
+                        table
+                            tbody
+                                for item in profile.education
+                                    tr
+                                        each event, date in item
+                                            th #{date}
+                                            td #{event}
+                                    
                 section
                     h3 職務経歴
                     .table
@@ -59,23 +88,16 @@ block body
                                             th #{date}
                                             td #{event}
                 section
-                    h3 スキルの要約
-                    h4 キャリアの中で最も経験を積んだスキル
-                    .list
+                    h3 スキルと得意分野
+                    h4 スキル一覧
+                    .list(data-layout='parallel')
                         ul
-                            each item in profile.skill.skilled
-                                li #{item}
-                    h4 現在習熟を目指しているスキル
-                    .list
-                        ul
-                            each item in profile.skill.advanced
-                                li #{item}
-                section
-                    h3 得意分野
-                    .list
-                        ul
-                            each specialty in profile.specialty
-                                li #{specialty}
+                            each year, skill in profile.skill.set
+                                li #{skill + ' : ' + year + '年'}
+                    h4 スキルについて
+                    .paragraph
+                        for paragraph in profile.skill.description
+                            p #{paragraph}
         article
             .content-container
                 h2 プロジェクト実績

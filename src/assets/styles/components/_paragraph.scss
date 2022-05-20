@@ -1,0 +1,6 @@
+.paragraph {
+    @extend %margin-sub-section;
+    p {
+        @extend %margin-sub-element;
+    }
+}

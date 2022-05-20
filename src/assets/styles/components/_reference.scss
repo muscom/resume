@@ -1,0 +1,24 @@
+.reference {
+    @extend %margin-sub-section;
+    text-align: center;
+    p,
+    dl {
+        @extend %margin-sub-element;
+    }
+    dl {
+        @include inline-flex;
+        margin: 0.5em 0.5em 0;
+        dt,
+        dd {
+            margin: 0;
+            padding: 0;
+        }
+        dt {
+            font-weight: $weight-bold;
+            &::after {
+                margin-right: 0.5em;
+                content: ':';
+            }
+        }
+    }
+}
