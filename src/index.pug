@@ -52,7 +52,11 @@ block body
             h1
                 ruby
                     | #{resumeHeader.name.content.label}
-                    rt #{resumeHeader.name.content.pronunciation}
+                    rt
+                        if lang === 'ja'
+                            | #{resumeHeader.name.content.pronunciation}
+                        else
+                            | #{resumeHeader.name.locale[lang].pronunciation}
             section
                 picture
                     if resumeHeader.photo.content.x2
@@ -80,32 +84,44 @@ block body
                                     }
                                 }
                             }
+                            if(locale !== 'ja' && !!val.locale) {
+                                this_value = val.locale[lang];
+                            }
                         dl
                             dt #{!!locale[key] ? locale[key][lang] : key}
                             dd #{this_value}
     main
         article
             .content-container
-                h2 履歴書
+                h2 #{lang === 'ja' ? '履歴書' : 'Resume'}
                 section
-                    h3 希望する職種・ポジション
-                    for item in resume.objective.content
-                        p #{item}
+                    h3 #{lang === 'ja' ? '希望する職種・ポジション' : 'Objective'}
+                    if lang === 'ja'
+                        for item in resume.objective.content
+                            p #{item}
+                    else
+                        for item in resume.objective.locale[lang]
+                            p #{item}
                 section
-                    h3 スキル
+                    h3 #{lang === 'ja' ? 'スキル' : 'Skill'}
                         .list(data-layout='parallel')
                             ul
                                 each val, key in resume.skill.content
-                                    li #{key + ' : ' + val + '年'}
+                                    -
+                                        const suffix = lang === 'ja' ? '年' : 'year(s)';
+                                    li #{key + ' : ' + val + suffix}
                 section
                     h3 学歴
                     .table
                         table
                             tbody
-                                for item in resume.education.content
+                                for item, index in resume.education.content
                                     tr
-                                        th #{local_date(item.period.to, date_option.history)}
+                                        th #{local_date(item.period.from, date_option.history) + ' - ' + local_date(item.period.to, date_option.history)}
                                         td #{item.event}
+                                        
+                                        
+                                            
                 section
                     h3 職務経歴
                     .table
