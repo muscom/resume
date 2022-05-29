@@ -2,6 +2,7 @@
 const { src, dest, watch, series, parallel } = require('gulp');
 const replace = require('gulp-replace');
 const env = require('node-env-file');
+const fs = require('fs');
 
 // sass
 const gulp_sass = require('gulp-sass')(require('sass'));
@@ -75,6 +76,8 @@ exports.sass = series(compile_sass);
 
 // pug
 function compile_pug() {
+    const content = JSON.parse(fs.readFileSync('./src/.data/content.json'));
+    const locale = JSON.parse(fs.readFileSync('./src/assets/data/locale.json'));
     return src(['./src/**/*.pug', '!./src/**/_*.pug'])
         .pipe(
             gulp_pug({
@@ -82,6 +85,8 @@ function compile_pug() {
                 pretty: true,
                 locals: {
                     env: process.env,
+                    content: content,
+                    locale: locale,
                 },
             })
         )

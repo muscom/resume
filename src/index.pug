@@ -10,8 +10,36 @@ block settings
             keywords: '',
             site_name: 'Resume'
         };
-    //- import profile setting
-    include /src/assets/nodes/includes/_profile
+        const resumeHeader = content.resumeHeader;
+        const resumeSub = content.resumeSub;
+        const resume = content.resume;
+        const experience = content.experience;
+        const project = content.project;
+
+        // Local date
+        const local_date = function(date, option) {
+            const default_option = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const this_date = new Date(date);
+
+            const this_option = !!option ? option : default_option;
+            return new Intl.DateTimeFormat(lang, this_option).format(this_date);
+        };
+
+        const date_option = {
+            detail: {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            },
+            history: {
+                year: 'numeric',
+                month: 'long',
+            }
+        };
 
 //- additional meta data.
 block head
@@ -23,106 +51,88 @@ block body
         .content-container
             h1
                 ruby
-                    | #{profile.data.name}
-                    rt #{profile.data.kana}
+                    | #{resumeHeader.name.content.label}
+                    rt #{resumeHeader.name.content.pronunciation}
             section
                 picture
-                    source(srcset = profile.photo.x2 + ' 2x')
-                    img(src = profile.photo.x1 alt = '')
+                    if resumeHeader.photo.content.x2
+                        source(srcset = resumeHeader.photo.content.x2 + ' 2x')
+                    img(src = resumeHeader.photo.content.x1 alt = '')
                 .difinitions
-                    dl
-                        dt 住所
-                        dd #{profile.data.address}
-                    dl
-                        dt メールアドレス
-                        dd
-                            a(href='mailto:' + profile.data.mail) #{profile.data.mail}
-                    dl
-                        dt 電話番号
-                        dd
-                            a(href='tel:' + profile.data.phone) #{profile.data.phone}
-                    dl
-                        dt 生年月日
-                        dd #{profile.data.birth.toLocaleDateString('ja-JP')}
-                    dl
-                        dt 扶養の有無
-                        dd #{!!profile.data.dependent ? profile.data.dependent + '人' : '無'}
-                    dl
-                        dt 配偶者
-                        dd #{profile.data.partner ? '有' : '無'}
+                    each val, key in resumeSub
+                        -
+                            let this_value = val.content;
+                            if(key === 'birthDay') {
+                                this_value = local_date(val.content, date_option.detail);
+                            }
+                            if(typeof val.content === 'boolean') {
+                                if(lang === 'ja') {
+                                    if(!!val.content) {
+                                        this_value = 'あり';
+                                    } else {
+                                        this_value = 'なし';
+                                    }
+                                } else if(lang === 'en') {
+                                    if(!!val.content) {
+                                        this_value = 'Have';
+                                    } else {
+                                        this_value = 'Do not have';
+                                    }
+                                }
+                            }
+                        dl
+                            dt #{!!locale[key] ? locale[key][lang] : key}
+                            dd #{this_value}
     main
         article
             .content-container
                 h2 履歴書
-                .reference(data-media='print')
-                    p: a(href = profile.resume.uri) #{profile.resume.uri}
-                    dl
-                        dt ID
-                        dd #{profile.resume.id}
-                    dl
-                        dt Password
-                        dd #{profile.resume.password}
-
                 section
                     h3 希望する職種・ポジション
-                    p !{profile.objective}
+                    for item in resume.objective.content
+                        p #{item}
+                section
+                    h3 スキル
+                        .list(data-layout='parallel')
+                            ul
+                                each val, key in resume.skill.content
+                                    li #{key + ' : ' + val + '年'}
                 section
                     h3 学歴
                     .table
                         table
                             tbody
-                                for item in profile.education
+                                for item in resume.education.content
                                     tr
-                                        each event, date in item
-                                            th #{date}
-                                            td #{event}
-                                    
+                                        th #{local_date(item.period.to, date_option.history)}
+                                        td #{item.event}
                 section
                     h3 職務経歴
                     .table
                         table
                             tbody
-                                for item in profile.experience
+                                for item in resume.history.content
                                     tr
-                                        each event, date in item
-                                            th #{date}
-                                            td #{event}
-                section
-                    h3 スキルと得意分野
-                    h4 スキル一覧
-                    .list(data-layout='parallel')
-                        ul
-                            each year, skill in profile.skill.set
-                                li #{skill + ' : ' + year + '年'}
-                    h4 スキルについて
-                    .paragraph
-                        for paragraph in profile.skill.description
-                            p #{paragraph}
+                                        th #{local_date(item.period.from, date_option.history) + '-' + local_date(item.period.to, date_option.history)}
+                                        td #{item.event}
         article
             .content-container
                 h2 プロジェクト実績
                 section.projects
-                    each project in profile.project
-                        section.project
-                            h3
-                                span.project-name #{project.name}
-                                    small #{project.period}
-                                span.project-detail
-                                    a(href = project.uri) #{project.uri}
-                            .list
-                                ul
-                                    each role in project.role
-                                        li #{role}
-        article
-            .content-container
-                h2 お問い合わせ
-                section
-                    .difinitions
-                        dl
-                            dt メールアドレス
-                            dd
-                                a(href = 'mailto:' + profile.data.mail) #{profile.data.mail}
-                        dl
-                            dt 電話番号
-                            dd
-                                a(href = 'tel:' + profile.data.phone) #{profile.data.phone}
+                    for item in project
+                        each val, key in item
+                            section.project
+                                h3
+                                    span.project-name #{key}
+                                    small #{local_date(val.content.period.to, date_option.history)}
+                                    span.project-detail
+                                        a(href = val.content.uri) #{val.content.uri}
+                                p(style='text-align: center') #{val.content.description}
+                                .list(data-layout='parallel')
+                                    ul
+                                        for lang in val.content.lang
+                                            li #{lang}
+                                .list
+                                    ul
+                                        for delivarable in val.content.delivarable
+                                            li #{delivarable}

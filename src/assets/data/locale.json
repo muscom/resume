@@ -1,0 +1,62 @@
+{
+    "location": {
+        "ja": "www",
+        "en": "www"
+    },
+    "name": {
+        "ja": "名前",
+        "en": "Name"
+    },
+    "photo": {
+        "ja": "写真",
+        "en": "Photo"
+    },
+    "birthDay": {
+        "ja": "生年月日",
+        "en": "Date of birth"
+    },
+    "phone": {
+        "ja": "電話",
+        "en": "Telephone"
+    },
+    "mail": {
+        "ja": "メール",
+        "en": "Email"
+    },
+    "address": {
+        "ja": "住所",
+        "en": "Address"
+    },
+    "dependent": {
+        "ja": "扶養",
+        "en": "Dependents"
+    },
+    "partner": {
+        "ja": "配偶者",
+        "en": "Has partner"
+    },
+    "objective": {
+        "ja": "志望動機",
+        "en": "Objective"
+    },
+    "skill": {
+        "ja": "スキル",
+        "en": "Skill"
+    },
+    "education": {
+        "ja": "学歴",
+        "en": "Education"
+    },
+    "history": {
+        "ja": "職歴",
+        "en": "Job history"
+    },
+    "overview": {
+        "ja": "概要",
+        "en": "Overview"
+    },
+    "roles": {
+        "ja": "プロジェクトで担当する役割",
+        "en": "Roles in the project"
+    }
+}
