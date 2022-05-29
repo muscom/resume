@@ -113,7 +113,7 @@ block body
                             tbody
                                 for item in resume.history.content
                                     tr
-                                        th #{local_date(item.period.from, date_option.history) + '-' + local_date(item.period.to, date_option.history)}
+                                        th #{local_date(item.period.from, date_option.history) + ' - ' + local_date(item.period.to, date_option.history)}
                                         td #{item.event}
         article
             .content-container
