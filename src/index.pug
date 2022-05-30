@@ -154,7 +154,7 @@ block body
                 section.roles
                     h3 #{lang === 'ja' ? 'プロジェクトでの役割' : 'Roles in projects'}
                     - const projectRoles = lang === 'ja' ? experience.roles.content : experience.roles.locale[lang];
-                    .item(data-layout='parallel')
+                    .list(data-layout='parallel')
                         ul
                             for role in projectRoles
                                 li #{role}
