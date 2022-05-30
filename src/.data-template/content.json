@@ -1,0 +1,204 @@
+{
+    "resumeHeader": {
+        "name": {
+            "content": {
+                "label": "Your display name",
+                "pronunciation": "にほんごのよみ"
+            },
+            "locale": {
+                "en": {
+                    "pronunciation": "pronunciation in English"
+                }
+            }
+        },
+        "photo": {
+            "content": {
+                "x1": "./assets/images/placehold.jpg",
+                "x2": "./assets/images/placehold@2x.jpg"
+            }
+        }
+    },
+    "resumeSub": {
+        "birthDay": {
+            "content": "1900-01-01"
+        },
+        "phone": {
+            "content": "012-345-6789"
+        },
+        "mail": {
+            "content": "mail@example.com"
+        },
+        "address": {
+            "content": "〒000-0000 都道府県市区町村町名 00-00-00",
+            "locale": {
+                "en": "00-00-00 Street Ward, City Name, Prefecture 000-0000"
+            }
+        },
+        "dependent": {
+            "content": "Number or Boolean(false)"
+        },
+        "partner": {
+            "content": "Boolean"
+        }
+    },
+    "resume": {
+        "location": {
+            "content": {
+                "uri": "https://example.com/resume/",
+                "id": "ID for to show resume",
+                "password": "Password for to show resume"
+            }
+        },
+        "objective": {
+            "content": [
+                "希望するポジションを記述します。文は配列の一要素として記載します。",
+                "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ",
+                "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ"
+            ],
+            "locale": {
+                "en": [
+                    "Write objective here as a element of array.",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                ]
+            }
+        },
+        "skill": {
+            "content": {
+                "SKILL Name": "Numeric"
+            }
+        },
+        "education": {
+            "content": [
+                {
+                    "period": {
+                        "from": "1900-01-01",
+                        "to": "2000-02-02"
+                    },
+                    "event": "Description of education event in Japanese."
+                }
+            ],
+            "locale": {
+                "en": [
+                    {
+                        "event": "Description of education event in English."
+                    }
+                ]
+            }
+        },
+        "history": {
+            "content": [
+                {
+                    "period": {
+                        "from": "1900-01-01",
+                        "to": "2000-02-02"
+                    },
+                    "event": "Description of education event in Japanese."
+                }
+            ],
+            "locale": {
+                "en": [
+                    {
+                        "event": "Description of education event in English."
+                    }
+                ]
+            }
+        }
+    },
+    "experience": {
+        "overview": {
+            "content": [
+                "Write job experience overview in Japanese here as a element of array.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            ],
+            "locale": {
+                "en": [
+                    "Write job experience overview in English here as a element of array.",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                ]
+            }
+        },
+        "roles": {
+            "content": [
+                "List of project roles on overall projects. Japanese",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            ],
+            "locale": {
+                "en": [
+                    "List of project roles on overall projects. English",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                ]
+            }
+        }
+    },
+    "project": [
+        {
+            "Project name 1": {
+                "content": {
+                    "production": "Production name",
+                    "description": "Project description in Japanese.",
+                    "uri": "URI of the project",
+                    "period": {
+                        "from": "1900-01-01",
+                        "to": "2000-01-01"
+                    },
+                    "lang": [
+                        "Language name used in project 1",
+                        "Language name used in project 2",
+                        "Language name used in project 3"
+                    ],
+                    "delivarable": [
+                        "Delivarable 1 in the project.",
+                        "Delivarable 2 in the project."
+                    ]
+                },
+                "locale": {
+                    "en": {
+                        "description": "Project description in English",
+                        "delivarable": [
+                            "Delivarable 1 English in the project.",
+                            "Delivarable 2 English in the project."
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "Project name 2": {
+                "content": {
+                    "production": "Production name",
+                    "description": "Project description in Japanese.",
+                    "uri": "URI of the project",
+                    "period": {
+                        "from": "1900-01-01",
+                        "to": "2000-01-01"
+                    },
+                    "lang": [
+                        "Language name used in project 1",
+                        "Language name used in project 2",
+                        "Language name used in project 3"
+                    ],
+                    "delivarable": [
+                        "Delivarable 1 in the project.",
+                        "Delivarable 2 in the project."
+                    ]
+                },
+                "locale": {
+                    "en": {
+                        "description": "Project description in English",
+                        "delivarable": [
+                            "Delivarable 1 English in the project.",
+                            "Delivarable 2 English in the project."
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}

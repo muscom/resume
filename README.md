@@ -50,6 +50,12 @@ const settings = {
 
 `src/.data/content.json`
 
+#### Profile JSON Template
+
+```
+src/.data-template/content.json
+```
+
 #### Outline
 
 ```JSON
