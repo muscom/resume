@@ -62,7 +62,7 @@ block body
                     if resumeHeader.photo.content.x2
                         source(srcset = resumeHeader.photo.content.x2 + ' 2x')
                     img(src = resumeHeader.photo.content.x1 alt = '')
-                .difinitions
+                .definitions
                     each val, key in resumeSub
                         -
                             let this_value = val.content;
@@ -94,6 +94,15 @@ block body
         article
             .content-container
                 h2 #{lang === 'ja' ? '履歴書' : 'Resume'}
+                section.reference(data-media='print')
+                    h3 #{lang === 'ja' ? 'ブラウザで確認する' : 'Check with browser'}
+                    p: a(href = resume.location.content.uri) #{resume.location.content.uri} 
+                    dl
+                        dt ID
+                        dd #{resume.location.content.id}
+                    dl
+                        dt Password
+                        dd #{resume.location.content.password}
                 section
                     h3 #{lang === 'ja' ? '希望する職種・ポジション' : 'Objective'}
                     if lang === 'ja'
@@ -111,29 +120,44 @@ block body
                                         const suffix = lang === 'ja' ? '年' : 'year(s)';
                                     li #{key + ' : ' + val + suffix}
                 section
-                    h3 学歴
+                    h3 #{lang === 'ja' ? '学歴' : 'Education'}
                     .table
                         table
                             tbody
                                 for item, index in resume.education.content
                                     tr
                                         th #{local_date(item.period.from, date_option.history) + ' - ' + local_date(item.period.to, date_option.history)}
-                                        td #{item.event}
-                                        
-                                        
-                                            
+                                        if lang === 'ja'
+                                            td #{item.event}
+                                        else
+                                            td #{resume.education.locale[lang][index].event}
                 section
-                    h3 職務経歴
+                    h3 #{lang === 'ja' ? '職務経歴' : 'Job history'}
                     .table
                         table
                             tbody
-                                for item in resume.history.content
+                                for item, index in resume.history.content
                                     tr
                                         th #{local_date(item.period.from, date_option.history) + ' - ' + local_date(item.period.to, date_option.history)}
-                                        td #{item.event}
+                                        if lang === 'ja'
+                                            td #{item.event}
+                                        else
+                                            td #{resume.history.locale[lang][index].event}
         article
             .content-container
-                h2 プロジェクト実績
+                h2 #{lang === 'ja' ? 'プロジェクト実績' : 'Project achievements'}
+                section.overview
+                    h3 #{lang === 'ja' ? '概要' : 'Overview'}
+                    - const projectOverview = lang === 'ja' ? experience.overview.content : experience.overview.locale[lang];
+                    for item in projectOverview
+                        p #{item}
+                section.roles
+                    h3 #{lang === 'ja' ? 'プロジェクトでの役割' : 'Roles in projects'}
+                    - const projectRoles = lang === 'ja' ? experience.roles.content : experience.roles.locale[lang];
+                    .item(data-layout='parallel')
+                        ul
+                            for role in projectRoles
+                                li #{role}
                 section.projects
                     for item in project
                         each val, key in item
@@ -143,12 +167,21 @@ block body
                                     small #{local_date(val.content.period.to, date_option.history)}
                                     span.project-detail
                                         a(href = val.content.uri) #{val.content.uri}
-                                p(style='text-align: center') #{val.content.description}
+                                p(style='text-align: center')
+                                    if lang === 'ja'
+                                        | #{val.content.description}
+                                    else
+                                        | #{val.locale[lang].description}
+                                h4 #{lang === 'ja' ? '使用言語' : 'Languages'}
                                 .list(data-layout='parallel')
                                     ul
-                                        for lang in val.content.lang
-                                            li #{lang}
+                                        for used in val.content.lang
+                                            li #{used}
+                                h4 #{lang === 'ja' ? '成果物' : 'Delivarables'}
                                 .list
                                     ul
-                                        for delivarable in val.content.delivarable
-                                            li #{delivarable}
+                                        -
+                                            let delivarable = val.content.delivarable;
+                                            if(lang !== 'ja') delivarable = val.locale[lang].delivarable;
+                                        for deliv in delivarable
+                                            li #{deliv}
